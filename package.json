@@ -1,0 +1,33 @@
+{
+  "name": "tree-sitter-demo",
+  "version": "1.0.0",
+  "scripts": {
+    "// 1. 初始化和编译": "以下命令用于项目初始化和编译",
+    "prepare": "node-gyp rebuild",
+    "init-grammar": "rm -f \"$HOME/Library/Application Support/tree-sitter/config.json\" && tree-sitter init-config && tree-sitter generate",
+    "// 2. 构建命令": "以下命令用于构建项目",
+    "build:grammar": "tree-sitter generate",
+    "build": "tsc",
+    "// 3. 运行命令": "以下命令用于运行项目",
+    "dev": "pnpm build:grammar && pnpm build && tsx src/index.ts",
+    "start": "pnpm run init-grammar && pnpm run parse:test && pnpm run dev",
+    "// 4. 解析命令": "以下命令用于测试解析器",
+    "parse": "tree-sitter parse",
+    "parse:test": "tree-sitter parse test.add"
+  },
+  "dependencies": {
+    "nan": "^2.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tree-sitter": "^0.20.5",
+    "tree-sitter-cli": "^0.20.8",
+    "tsx": "^4.7.0",
+    "typescript": "^5.0.0"
+  },
+  "main": "grammar.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
